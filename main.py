@@ -1,5 +1,9 @@
 import streamlit as st
-from langchain_community.document_loaders import PyPDFLoader
+from langchain_community.document_loaders import (
+    PyPDFLoader, TextLoader, CSVLoader, PythonLoader, UnstructuredMarkdownLoader,
+    UnstructuredWordDocumentLoader, UnstructuredPowerPointLoader,
+    UnstructuredExcelLoader, JSONLoader, UnstructuredFileLoader
+)
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 import os
 import tempfile
@@ -10,6 +14,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.chains.question_answering import load_qa_chain
 from langchain.prompts import PromptTemplate
 from dotenv import load_dotenv
+
 
 # tải biến môi trường
 load_dotenv()
