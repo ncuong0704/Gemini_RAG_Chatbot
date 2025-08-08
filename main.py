@@ -1,8 +1,6 @@
 import streamlit as st
 from langchain_community.document_loaders import (
-    PyPDFLoader, TextLoader, CSVLoader, PythonLoader, UnstructuredMarkdownLoader,
-    UnstructuredWordDocumentLoader, UnstructuredPowerPointLoader,
-    UnstructuredExcelLoader, JSONLoader, UnstructuredFileLoader
+    PyPDFLoader
 )
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 import os
@@ -13,13 +11,10 @@ from langchain_community.vectorstores import FAISS
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.chains.question_answering import load_qa_chain
 from langchain.prompts import PromptTemplate
-from dotenv import load_dotenv
 
 
-# tải biến môi trường
-load_dotenv()
 
-api_key = os.getenv('GOOGLE_API_KEY')
+api_key = st.secrets['gemini']['GOOGLE_API_KEY']
 
 if not api_key:
     st.error('Không tìm thấy key')
